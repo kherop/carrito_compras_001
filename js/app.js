@@ -1,15 +1,15 @@
 // Variables
-const carrito = document.getElementById('carrito');
-const cursos = document.getElementById('lista-cursos');
+const carrito = document.querySelector('#carrito');
+const cursos = document.querySelector('#lista-cursos');
 const listaCursos = document.querySelector('#lista-carrito tbody');
-const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
 
 // Listeners
 cargarEventListeners();
 
 function cargarEventListeners() {
     // Dispara cuando se presiona "Agregar al carrito"
-    cursos.addEventListener('click', comprarCurso);
+    cursos.addEventListener('click', agregarCurso);
 
     // Dispara cuando se quiere eliminar un curso del carrito
     carrito.addEventListener('click', eliminarCurso);
@@ -23,7 +23,7 @@ function cargarEventListeners() {
 
 // Functions
 // Función para añadir un curso al carrito
-function comprarCurso(e) {
+function agregarCurso(e) {
     // Cancela la función predeterminada
     e.preventDefault();
 
@@ -32,7 +32,7 @@ function comprarCurso(e) {
         // Selecciona la tarjeta que contiene el curso completo
         const curso = e.target.parentElement.parentElement;
         // Recupera los datos del curso con la función leer datos
-        infoCurso = leerDatosCurso(curso);
+        const infoCurso = leerDatosCurso(curso);
         // Añadimos el curso al carrito
         insertarCarrito(infoCurso);
         // Guardamos los cursos en el local storage
